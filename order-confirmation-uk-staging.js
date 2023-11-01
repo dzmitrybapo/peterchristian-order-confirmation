@@ -41,7 +41,7 @@ if(window.location.href.indexOf("/checkout/order-confirmation") >= 0){
 	
 	function submitGDPR(){
 		let order_num = $("[data-test=order-confirmation-order-number-text] strong").text();
-		let store_hash = '2fhihzl616';
+		let store_hash = '6e9vihozlr';
 		let email = '{{ customer.email }}';
 		let local_email = localStorage.getItem("bapo_ck_email");
 		if(email == "" || local_email != ""){
