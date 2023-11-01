@@ -1,5 +1,5 @@
 //COLLECTING GUEST EMAIL SO WE CAN USE IT ON ORDER CONFIRMATION
-console.log("GDPR");
+console.log("GDPR - INCLUDED VIA SCRIPT");
 if(window.location.href.indexOf("/checkout") >= 0 && window.location.href.indexOf("order-confirmation") == -1){
 	let email_saved = "";
 	console.log("We on checkout!");
