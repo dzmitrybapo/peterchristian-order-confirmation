@@ -34,14 +34,14 @@ if(window.location.href.indexOf("/checkout/order-confirmation") >= 0){
 			if($(".orderConfirmation-section").length > 0 && !form_added){
 				form_added = true;
 				console.log($(".orderConfirmation-section"));
-				$(".orderConfirmation-section").append('<div style="color:#292929;font-family:\'Open Sans\',\'Helvetica Neue\',Arial,sans-serif;background-color:#2421381A!important;padding:1rem!important"> <div> <div> <h6 style="font-weight:600;font-size:1.2rem;margin:0">To help us improve our service, please tell us how you came across our website today.</h6> <select id="gdpr1" style="margin:1rem 0"> <option value="" selected="selected">Please select an option</option> <option value="EMAIL">Received an Email</option> <option value="INTSEARCH">Internet Search</option> <option value="WEBLINK">Link from another website</option> <option value="MAGAZINE">Magazine Advertisement</option> <option value="NEWSPAPER">Newspaper Advertisement</option> <option value="CATALOGUE">Received a Catalogue</option> <option value="RF">Recommended by a friend</option> <option value="RB">Returning Customer</option> <option value="OTHER">Other</option> </select> </div><div> <h6 style="font-weight:600;font-size:1.2rem;margin:0">Your Contact Preferences</h6> <p>As a valued customer we would like to keep you in the loop about exciting new product launches, sales and special offers. Please tick the boxes below if you would prefer not to receive these communications from Peter Christian</p><div><input id="gdpr2" type="checkbox" name="optin_post" style="position:relative;top:2px"><label for="optinCheckbox-optin_post"><span>&nbsp;Please don\'t send me promotional emails</span></label></div><div><input id="gdpr3" type="checkbox" name="optin_email" style="position:relative;top:2px"><label for="optinCheckbox-optin_email"><span>&nbsp;I don\'t want mailing from like minded retailers and charities</span></label></div></div><p>We trust that you enjoy receiving our catalogues, however if you would prefer not to, please email us on <strong><a href="mailto:helpdesk@peterchristian.co.uk">helpdesk@peterchristian.co.uk</a></strong> and we will update your preferences.<br><br>Your data is important so we\'ll always treat it with respect. For more information see our <a href="/privacy-cookies/" target="_blank">privacy policy.</a><br>You will be redirected back to the home page in<b class="countdown"></b>.<br><br></p></div><div><button class="btwsubmit" type="submit" style="background-color:#504d60!important;border-color:#504d60!important;color:#f5bb47!important;padding:.5rem 2rem;width:100%;font-weight:bold;" onclick="submitGDPR()">Submit</button></div></div>');
+				$(".orderConfirmation-section").append('<div style="color:#292929;font-family:\'Open Sans\',\'Helvetica Neue\',Arial,sans-serif;background-color:#2421381A!important;padding:1rem!important"><div><div><h6 style="font-weight:600;font-size:1.2rem;margin:0">To help us improve our service, please tell us how you came across our website today.</h6><select id="gdpr1" style="margin:1rem 0"><option value="" selected="selected">Please select an option</option><option value="EMAIL">Received an Email</option><option value="INTSEARCH">Internet Search</option><option value="WEBLINK">Link from another website</option><option value="MAGAZINE">Magazine Advertisement</option><option value="NEWSPAPER">Newspaper Advertisement</option><option value="CATALOGUE">Received a Catalogue</option><option value="RF">Recommended by a friend</option><option value="RB">Returning Customer</option><option value="OTHER">Other</option></select></div><p>We trust that you enjoy receiving our catalogues, however if you would prefer not to, please email us on <strong><a href="mailto:helpdesk@peterchristian.co.uk">helpdesk@peterchristian.co.uk</a></strong> and we will update your preferences.<br><br>Your data is important so we\'ll always treat it with respect. For more information see our <a href="/privacy-cookies/" target="_blank">privacy policy.</a><br>You will be redirected back to the home page in <b class="countdown"></b>.<br><br></p></div><div><button class="btwsubmit" type="submit" style="background-color:#504d60!important;border-color:#504d60!important;color:#f5bb47!important;padding:.5rem 2rem;width:100%;font-weight:bold;" onclick="submitGDPR()">Submit</button></div></div>');
 			}
 		}, 100);
 	});
 	
 	function submitGDPR(){
 		let order_num = $("[data-test=order-confirmation-order-number-text] strong").text();
-		let store_hash = 'ys17a8ss1m';
+		let store_hash = 'axz3gp0dm3';
 		let email = '{{ customer.email }}';
 		let local_email = localStorage.getItem("bapo_ck_email");
 		if(email == "" || local_email != ""){
@@ -57,8 +57,6 @@ if(window.location.href.indexOf("/checkout/order-confirmation") >= 0){
 					entity_id: order_num + '-order-' + store_hash,
 					entity_type: 'order',
 					store_hash: store_hash,
-					noemail: $("#gdpr2").is(':checked').toString(),		//"don't send emails" is checked
-					norent: $("#gdpr3").is(':checked').toString(),		//"no mailing from retailers" is checked
 					nomails: true,										//no mails is default
 					heardsource: $("#gdpr1").val(),
 					email: email,
